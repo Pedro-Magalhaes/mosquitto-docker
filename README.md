@@ -8,12 +8,21 @@
 
 Para rodar basta ter o docker instalado e executar o script "run_docker.sh". Uma alternativa é copiar e colocar o comando do scrip para o terminal. 
 
+```sh
+docker run -it --rm --name mosquitto -p 1883:1883 -p 9001:9001 -v $PWD/mosquitto:/mosquitto/ eclipse-mosquitto 
+```
+
+para rodar em background basta alterar o scrip e adiconar a flag " -d ". Quando utilizamos esse modo precisamos usar o comando  "docker stop" para finalizar o container. 
+
+```sh
+docker stop mosquitto
+```
+
 ## Configurações
 
-Para configurar o MQTT temos que editar as configurações na pasta [mosquitto/conf/mosquitto.conf](mosquitto/conf/mosquitto.conf)
+Para configurar o MQTT temos que editar as configurações na pasta [mosquitto/conf/mosquitto.conf](mosquitto/config/mosquitto.conf)
 
 Seguir as orientações do [site oficial](https://mosquitto.org/man/mosquitto-conf-5.html)
 
 A imagem utlizada é a oficial do [eclipse-mosquito](https://hub.docker.com/_/eclipse-mosquitto). Aqui usei a versão sem encriptação de dados. Existe a imagem que usa o open-ssl mas não testei o funcionamento. Como vou usar apenas na rede local, preferi não testar com ssl.
-
 
