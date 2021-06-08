@@ -15,7 +15,7 @@ Uma observação importante aqui é que o Docker tem alguns problemas com permis
 Para rodar basta ter o docker instalado e executar o script "run_docker.sh". Uma alternativa é copiar e colocar o comando do scrip para o terminal. (Obs.: se o usuário não está no grupo docker pode ser necessário usar "sudo")
 
 ```sh
-docker run -it --rm --name mosquitto -p 1883:1883 -p 9001:9001 -v $PWD/mosquitto:/mosquitto/ eclipse-mosquitto 
+docker run -it --rm --name mosquitto -p 1883:1883 -p 9001:9001 -v $PWD/mosquitto:/mosquitto/ -v $PWD/mosquitto/log:/mosquitto/log  -v $PWD/mosquitto/data:/mosquitto/data -v $PWD/mosquitto/config:/mosquitto/config   eclipse-mosquitto 
 ```
 
 para rodar em background basta alterar o scrip e adiconar a flag " -d ". Quando utilizamos esse modo precisamos usar o comando  "docker stop" para finalizar o container. 
